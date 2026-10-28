@@ -4,7 +4,7 @@ package_name = 'final_proj'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.1.0',
     packages=find_packages(),
     package_data={
         'final_proj': ['data/*.yaml', 'data/*.pgm', 'data/*.json'],

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>final_proj</name>
-  <version>0.0.0</version>
+  <version>0.1.0</version>
   <description>LLM-assisted uncertainty-aware navigation for autonomous delivery robots</description>
   <maintainer email="sreshthtiwari13@gmail.com">Sreshth</maintainer>
   <license>MIT</license>

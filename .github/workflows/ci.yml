@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: pip install -e src/final_proj
+      - run: pytest
+      - name: Smoke test the pipeline (offline LLM stub)
+        env:
+          MPLBACKEND: Agg
+        run: python experiments/test_llm_full_pipeline.py --mode blocked_moving --seed 99 --no-window
