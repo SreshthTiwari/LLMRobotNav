@@ -1,0 +1,6 @@
+numpy
+matplotlib
+PyYAML
+Pillow
+# optional: real LLM backend (falls back to a local stub when absent)
+groq
