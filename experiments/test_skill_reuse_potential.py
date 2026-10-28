@@ -11,6 +11,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.planning.astar import astar
 
@@ -201,8 +202,7 @@ def main():
     parser.add_argument("--output", type=str, default=None, help="Output JSON file for detailed results")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
 
     results = run_reuse_potential_test(
         map_path=str(map_path),

@@ -9,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.environment.corruption import Corruptor
 from final_proj.planning.astar import astar
@@ -180,8 +181,7 @@ def main():
     parser.add_argument("--csv", type=str, default="kalman_baseline_results.csv", help="CSV file to save detailed trial results")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
     runner = KalmanBaselineTestRunner(
         map_path=str(map_path),
         trials=args.trials,

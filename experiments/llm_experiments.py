@@ -10,6 +10,7 @@ from pathlib import Path
 # Ensure the current script directory is on sys.path so top-level test modules can be imported
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from final_proj.paths import DEFAULT_MAP
 import test_llm_full_pipeline
 from test_llm_full_pipeline import FullPipelineSimulator
 
@@ -25,8 +26,7 @@ def main():
     parser.add_argument("--csv-output", type=str, default=None, help="Optional output CSV file for trial results")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
 
     simulator = FullPipelineSimulator(
         map_path=str(map_path),

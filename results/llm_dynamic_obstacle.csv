@@ -1,0 +1,21 @@
+test_id,test_type,expected_answer,actual_answer,success,start_x,start_y,goal_x,goal_y,corrupted_cells,corrupted_path_exists,corrupted_path_length,modified_path_exists,modified_path_length,decision_label,decision_confidence,decision_reason,decision_action,movement_pattern,num_timesteps,temporal_test
+1,uncertain_sparse,keep_moving,keep_moving,True,264,280,310,221,1303,True,106,True,106,keep_moving,0.8,"Uncertain cells are moving across timesteps, indicating a vanishing blockage.",keep_moving,vanishing,3,True
+2,uncertain_sparse,keep_moving,keep_moving,True,174,245,207,241,602,True,258,True,258,uncertain,0.8,Uncertain cells are moving across timesteps.,keep_moving,moving,3,True
+3,uncertain_sparse,keep_moving,keep_moving,True,156,295,272,249,790,True,229,True,229,keep_moving,0.8,"Uncertain cells are moving across timesteps, indicating a vanishing blockage.",keep_moving,vanishing,3,True
+4,uncertain_sparse,keep_moving,wait,False,317,133,167,267,1309,True,285,True,285,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True
+5,uncertain_sparse,keep_moving,wait,False,97,262,299,288,1517,True,321,True,321,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True
+6,uncertain_clustered,replan,replan,True,317,218,118,267,49,True,253,True,253,new_blockage,0.9,Blockage persists in the same location across timesteps.,replan,static,3,True
+7,uncertain_clustered,replan,wait,False,265,247,331,226,49,True,88,True,88,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True
+8,uncertain_clustered,replan,replan,True,79,179,188,228,34,True,207,True,207,new_blockage,0.8,Blockage persists in the same location across timesteps.,replan,static,3,True
+9,uncertain_clustered,replan,replan,True,258,233,178,237,41,True,127,True,127,new_blockage,0.9,Blockage persists in the same locations across timesteps.,replan,static,3,True
+10,uncertain_clustered,replan,replan,True,127,301,217,248,34,True,348,True,348,new_blockage,0.9,Blockage persists in the same location across timesteps.,replan,static,3,True
+11,blocked_moving,wait,wait,True,337,128,170,296,6,True,336,True,336,new_blockage,0.8,"Blockage is moving across timesteps, indicating a dynamic obstacle.",wait_and_reinspect,moving,3,True
+12,blocked_moving,wait,wait,True,120,251,281,297,6,True,280,True,280,moving_blockage,0.8,New blockage is moving across timesteps.,wait_and_reinspect,moving,3,True
+13,blocked_moving,wait,replan,False,182,269,213,209,9,True,92,True,92,new_blockage,0.8,Blockage persists in the same location across timesteps.,replan,static,3,True
+14,blocked_moving,wait,wait,True,223,213,328,275,6,True,168,True,168,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True
+15,blocked_moving,wait,replan,False,147,306,58,175,9,True,221,True,221,new_blockage,0.8,Blockage persists in the same location across timesteps.,replan,static,3,True
+16,blocked_permanent,replan,replan,True,232,291,140,246,20,True,236,True,236,new_blockage,0.9,Blockage persists in the same location across timesteps.,replan,static,3,True
+17,blocked_permanent,replan,wait,False,292,101,278,242,18,True,198,True,198,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True
+18,blocked_permanent,replan,wait,False,243,232,298,97,15,True,327,True,327,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True
+19,blocked_permanent,replan,replan,True,295,129,182,227,16,True,248,True,248,new_blockage,0.8,1s persist in approximately the same locations across timesteps,replan,static,3,True
+20,blocked_permanent,replan,wait,False,121,260,317,202,16,True,255,True,255,moving_blockage,0.8,"1s are moving across timesteps, indicating a moving blockage",wait_and_reinspect,moving,3,True

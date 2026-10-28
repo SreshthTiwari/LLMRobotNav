@@ -104,6 +104,7 @@ if MATPLOTLIB_AVAILABLE:
     except Exception:
         logger.debug('Could not install simple sys.excepthook filter', exc_info=True)
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.environment.corruption import Corruptor
 from final_proj.environment.context_extractor import ContextExtractor
@@ -713,8 +714,7 @@ def main():
     parser.add_argument("--no-window", action="store_true", help="Do not display visualizations")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
 
     simulator = FullPipelineSimulator(
         map_path=str(map_path),

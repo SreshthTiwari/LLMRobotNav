@@ -24,6 +24,7 @@ from dataclasses import dataclass, asdict
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+from final_proj.paths import DEFAULT_MAP, DEFAULT_SKILLS
 from final_proj.environment.map_loader import MapLoader
 from final_proj.environment.corruption import Corruptor
 from final_proj.environment.context_extractor import ContextExtractor
@@ -83,8 +84,7 @@ class NavigationEvaluator:
         self.origin = self.map_loader.get_origin()
         
         # Load skill store
-        pkg_root = Path(__file__).resolve().parent  # evaluation.py's directory
-        skills_path = pkg_root / 'final_proj' / 'data' / 'skills.json'
+        skills_path = DEFAULT_SKILLS
         self.skill_store = SkillStore(str(skills_path))
         
         # Initialize LLM components (optional)
@@ -673,8 +673,7 @@ def main():
     args = parser.parse_args()
 
     # Use house map - resolve relative to the final_proj package
-    pkg_root = Path(__file__).resolve().parent  # evaluation.py's directory
-    map_path = str(pkg_root / 'final_proj' / 'data' / 'map.yaml')
+    map_path = str(DEFAULT_MAP)
 
     print(f"Loading map: {map_path}")
 

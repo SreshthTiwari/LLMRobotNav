@@ -11,6 +11,7 @@ from pathlib import Path
 
 import numpy as np
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.environment.corruption import Corruptor
 from final_proj.environment.context_extractor import ContextExtractor
@@ -221,8 +222,7 @@ def main():
     parser.add_argument("--noise", type=float, default=0.05, help="Sparse corruption rate")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
 
     runner = LLMTargetedTestRunner(
         map_path=str(map_path),

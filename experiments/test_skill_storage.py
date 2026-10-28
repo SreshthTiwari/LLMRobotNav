@@ -20,6 +20,7 @@ try:
 except ImportError:
     MATPLOTLIB_AVAILABLE = False
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.planning.astar import astar
 
@@ -66,8 +67,7 @@ def path_contains_subpath(path, subpath):
 
 def test_skill_storage_and_reuse(show_window=True):
     # Setup
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
     ml = MapLoader(str(map_path))
     grid = ml.get_grid()
 

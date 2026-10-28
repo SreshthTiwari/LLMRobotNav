@@ -5,12 +5,14 @@ import argparse
 import json
 import random
 import sys
+import tempfile
 from pathlib import Path
 
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.planning.astar import astar
 from final_proj.memory.skill_store import SkillStore
@@ -93,7 +95,7 @@ def run_space_savings_test(map_path, num_trials=50, seed=None, show_window=False
     cost_map = make_cost_map(grid)
 
     full_paths_storage = []
-    skills_storage = SkillStore("/tmp/skill_store_test.json")
+    skills_storage = SkillStore(Path(tempfile.gettempdir()) / "skill_store_test.json")
 
     results = {
         "trials": [],
@@ -215,8 +217,7 @@ def main():
     parser.add_argument("--output", type=str, default=None, help="Output JSON file for detailed results")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
 
     results = run_space_savings_test(
         map_path=str(map_path),

@@ -23,6 +23,7 @@ try:
 except ImportError:
     MATPLOTLIB_AVAILABLE = False
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.environment.corruption import Corruptor
 from final_proj.environment.context_extractor import ContextExtractor
@@ -611,8 +612,7 @@ def main():
     parser.add_argument("--mode", choices=["uncertain_sparse", "uncertain_clustered", "blocked_moving", "blocked_permanent"], default="blocked_moving", help="Type of corruption/mode for the test")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
     integrator = LLMSkillStorageIntegration(map_path=str(map_path), seed=args.seed, mode=args.mode)
     history = integrator.run(show_window=not args.no_window)
     print(json.dumps({

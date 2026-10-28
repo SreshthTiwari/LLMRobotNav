@@ -15,6 +15,7 @@ try:
 except ImportError:
     MATPLOTLIB_AVAILABLE = False
 
+from final_proj.paths import DEFAULT_MAP
 from final_proj.environment.map_loader import MapLoader
 from final_proj.environment.corruption import Corruptor
 from final_proj.environment.context_extractor import ContextExtractor
@@ -582,8 +583,7 @@ def main():
     parser.add_argument("--no-window", action="store_true", help="Do not open visualization")
     args = parser.parse_args()
 
-    script_dir = Path(__file__).resolve().parent
-    map_path = script_dir / "final_proj" / "data" / "map.yaml"
+    map_path = DEFAULT_MAP
     integrator = FullIntegratedTest(map_path=str(map_path), seed=args.seed, mode=args.mode)
     result = integrator.run(show_window=not args.no_window)
     print(json.dumps({
